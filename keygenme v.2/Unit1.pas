@@ -53,17 +53,31 @@ begin
   for i:=1 to length(mayuscula) do
     begin
     num := pos(mayuscula[i],letras) + key;
-    serial := serial + letras[num]
+
+    if (num >= length(letras)) then
+      begin
+        num := num - length(letras);
+      end
+    else if (num < 0) then
+      begin
+        num := num + length(letras)
+
+      end;
+
+    serial := serial + letras[num];
+
     end;
-
-  
-  Edit2.Text := mayuscula;
+  // termina bucle del algoritmo
 
 
-
-
-
-
+  if (Edit2.Text = serial) then
+    begin
+    Application.MessageBox('Genial eres un gran cracker jeje , no olvides de hacer un tuto ', 'Felicidades ', MB_OK);
+    end
+  else
+    begin
+    Application.MessageBox('Practica mas, ya lo lograras ', 'Felicidades ', MB_OK);
+    end;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
