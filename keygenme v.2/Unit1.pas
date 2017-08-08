@@ -76,7 +76,7 @@ begin
     end
   else
     begin
-    Application.MessageBox('Practica mas, ya lo lograras ', 'Felicidades ', MB_OK);
+    Application.MessageBox('Practica mas, ya lo lograras ', 'Error  ', MB_OK);
     end;
 end;
 

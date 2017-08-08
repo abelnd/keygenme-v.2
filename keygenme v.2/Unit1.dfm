@@ -1,10 +1,11 @@
 object Form1: TForm1
   Left = 204
   Top = 136
-  Width = 439
-  Height = 182
   BorderIcons = [biSystemMenu]
+  BorderStyle = bsDialog
   Caption = 'Crackme V.2  by AbelJM  - Team  PeruCrackers'
+  ClientHeight = 143
+  ClientWidth = 423
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
