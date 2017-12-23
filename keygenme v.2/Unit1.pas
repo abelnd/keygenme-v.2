@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, jpeg, ExtCtrls;
+  Dialogs, StdCtrls, jpeg, ExtCtrls, registry;
 
 type
   TForm1 = class(TForm)
@@ -25,6 +25,7 @@ type
 
 var
   Form1: TForm1;
+  miregistro : TRegistry;
 
 implementation
 
@@ -38,6 +39,7 @@ var
 begin
   letras := 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   nombre := Edit1.Text;
+  miregistro := TRegistry.Create;
 
   //concatenamos el nombre con otra cadena
   nombre := nombre + 'perucrackers';
@@ -65,6 +67,7 @@ begin
       end;
 
     serial := serial + letras[num];
+    
 
     end;
   // termina bucle del algoritmo
@@ -73,11 +76,22 @@ begin
   if (Edit2.Text = serial) then
     begin
     Application.MessageBox('Genial eres un gran cracker jeje , no olvides de hacer un tuto ', 'Felicidades ', MB_OK);
+    miregistro.RootKey := HKEY_CURRENT_USER;
+    if miregistro.OpenKey('SOFTWARE\abeljm',true) then
+      begin
+      showmessage('creado');
+      end
+    else
+      begin
+      showmessage('no creado');
+      end
     end
   else
     begin
     Application.MessageBox('Practica mas, ya lo lograras ', 'Error  ', MB_OK);
     end;
+
+  Edit2.Text := serial;
 end;
 
 procedure TForm1.Button1Click(Sender: TObject);
